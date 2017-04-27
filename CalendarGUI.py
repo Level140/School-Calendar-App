@@ -67,16 +67,24 @@ def nextMonth():
         year.set(year.get()+1)
     month.set(month.get()+1)
     createMonth(month.get(),year.get())
+def lastMonth():
+    if(month.get()==1):
+        month.set(12)
+        year.set(year.get()-1)
+    month.set(month.get()-1)
+    createMonth(month.get(),year.get())
 #Welcome Screen
 #/Welcome Screen
 
 #Calendar
 createMonth(month,year)
 #/Get a grid of the calendar
-B = Button(root, text ="->", command = nextMonth)
+B = Button(root, text ="<-", font=('courier', 15, 'bold'),command = lastMonth)
 B.pack(anchor=E)
+F = Button(root, text ="->", font=('courier', 15, 'bold'),command = nextMonth)
+F.pack(anchor=E)
 label1 = Label(root, textvariable=cal, justify=LEFT, font=('courier', 30, 'bold'), bg='Blue')
-label1.pack(anchor=W,pady=10)
+label1.pack(anchor=W,pady=5)
 
 #/Calendar
 
