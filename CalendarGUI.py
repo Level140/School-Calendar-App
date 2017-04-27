@@ -80,6 +80,9 @@ label1.pack(anchor=W,pady=10)
 
 #/Calendar
 
+#Right Side Widgets
+
+
 label1.bind("<Button-1>", click)
 
 root.mainloop()
