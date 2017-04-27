@@ -42,7 +42,7 @@ def click(event):
         ro=4
     if(y>330 and y<380):
         ro=5
-    print str(month.get())+"/"+str(cally[ro][co])+"/"+str(year.get())
+    print(str(month.get())+"/"+str(cally[ro][co])+"/"+str(year.get()))
 def createMonth(mn,yr):
     str1 = calendar.month(year.get(), month.get())
     cal.set(str1)
@@ -56,7 +56,7 @@ def createMonth(mn,yr):
             else:
                 if(work[y+2][x]=='0'):
                     nextWeek+=1
-                    
+
                 if(nextWeek>0):
                     cally[y][x/3]=str(nextWeek)+work[y+2][x]
                 else:
@@ -87,6 +87,9 @@ label1 = Label(root, textvariable=cal, justify=LEFT, font=('courier', 30, 'bold'
 label1.pack(anchor=W,pady=5)
 
 #/Calendar
+
+#Right Side Widgets
+
 
 label1.bind("<Button-1>", click)
 
