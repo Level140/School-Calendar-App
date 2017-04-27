@@ -2,7 +2,7 @@ import calendar
 from Tkinter import *
 root = Tk()
 root.title("West Point Calendar")
-root.geometry('600x510')
+root.geometry('550x600')
 cally=[['0','0','0','0','0','0','0'],['0','0','0','0','0','0','0'],['0','0','0','0','0','0','0'],['0','0','0','0','0','0','0'],['0','0','0','0','0','0','0'],['0','0','0','0','0','0','0']]
 dayOnes=[]
 dayTwos=[]
@@ -12,37 +12,8 @@ month=IntVar()
 year=IntVar()
 year.set(2017)
 month.set(1)
-def click(event):
-    co=0
-    ro=0
-    x, y = event.x, event.y
-    if(x>0 and x<70):
-        co=0
-    if(x>70 and x<140):
-        co=1
-    if(x>140 and x<210):
-        co=2
-    if(x>210 and x<280):
-        co=3
-    if(x>280 and x<350):
-        co=4
-    if(x>350 and x<420):
-        co=5
-    if(x>420 and x<490):
-        co=6
-    if(y>80 and y<130):
-        ro=0
-    if(y>130 and y<180):
-        ro=1
-    if(y>180 and y<230):
-        ro=2
-    if(y>230 and y<280):
-        ro=3
-    if(y>280 and y<330):
-        ro=4
-    if(y>330 and y<380):
-        ro=5
-    print(str(month.get())+"/"+str(cally[ro][co])+"/"+str(year.get()))
+
+
 def createMonth(mn,yr):
     str1 = calendar.month(year.get(), month.get())
     cal.set(str1)
@@ -81,6 +52,100 @@ label1.pack(anchor=W,pady=10)
 #/Calendar
 
 #Right Side Widgets
+
+
+#############
+# To get selected day, variable is selectedDay
+# To get selected date, variable is dateNumText
+# To get selected lesson number, variable is lessonNumText
+
+
+############
+
+userInputFrame = Frame(root)
+userInputFrame.pack(side = LEFT)
+
+daySelectFrame = Frame(userInputFrame)
+daySelectFrame.pack()
+
+lessonSelectFrame = Frame(userInputFrame)
+lessonSelectFrame.pack()
+
+
+
+lessonNumText = StringVar()
+inputLessonLabel = Label(userInputFrame, text = "Input the lesson number", justify = LEFT)
+entryBox = Entry(userInputFrame, width = 30, textvariable = lessonNumText)
+entryBox.insert(END, "0")
+inputLessonLabel.pack()
+entryBox.pack()
+
+##########################
+#Day 1/2 radio buttons
+##########################
+Label(daySelectFrame, text = "Select Day:", justify = LEFT, bg = "White").pack()
+
+selectedDay = IntVar()
+
+Radiobutton(daySelectFrame,
+	text="Day 1",
+	padx = 20,
+	variable=selectedDay,
+	value=1,justify = LEFT).pack(anchor=W)
+
+Radiobutton(daySelectFrame,
+	text="Day 2",
+	padx = 20,
+	variable=selectedDay,
+	value=2,justify = LEFT).pack(anchor=W)
+
+dateNumText = StringVar()
+dateNumText = " "
+
+inputDateLabel = Label(userInputFrame, text = "Click a date on the calendar above", justify = LEFT)
+dateEntry = Label(userInputFrame, width = 30, text = dateNumText)
+
+inputDateLabel.pack()
+dateEntry.pack()
+
+
+
+
+#/Right Side Widgets
+
+def click(event):
+    co=0
+    ro=0
+    x, y = event.x, event.y
+    if(x>0 and x<70):
+        co=0
+    if(x>70 and x<140):
+        co=1
+    if(x>140 and x<210):
+        co=2
+    if(x>210 and x<280):
+        co=3
+    if(x>280 and x<350):
+        co=4
+    if(x>350 and x<420):
+        co=5
+    if(x>420 and x<490):
+        co=6
+    if(y>80 and y<130):
+        ro=0
+    if(y>130 and y<180):
+        ro=1
+    if(y>180 and y<230):
+        ro=2
+    if(y>230 and y<280):
+        ro=3
+    if(y>280 and y<330):
+        ro=4
+    if(y>330 and y<380):
+        ro=5
+    dateEntry.configure(text=str(month.get())+"/"+str(cally[ro][co])+"/"+str(year.get()))
+    print(dateNumText)
+
 
 
 label1.bind("<Button-1>", click)
