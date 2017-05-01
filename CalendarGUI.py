@@ -2,7 +2,7 @@ import calendar
 from Tkinter import *
 root = Tk()
 root.title("West Point Calendar")
-root.geometry('550x700')
+root.geometry('550x800')
 cally=[['0','0','0','0','0','0','0'],['0','0','0','0','0','0','0'],['0','0','0','0','0','0','0'],['0','0','0','0','0','0','0'],['0','0','0','0','0','0','0'],['0','0','0','0','0','0','0']]
 dayOnes=[]
 dayTwos=[]
@@ -125,13 +125,52 @@ Radiobutton(daySelectFrame,
 	value=2,justify = LEFT).pack(anchor=W)
 
 dateNumText = StringVar()
-dateNumText = " "
+
 
 inputDateLabel = Label(userInputFrame, text = "Click a date on the calendar above", justify = LEFT)
 dateEntry = Label(userInputFrame, width = 30, text = dateNumText)
 
 inputDateLabel.pack()
 dateEntry.pack()
+
+
+
+#############CSV
+
+
+
+def genCSV():
+    csvFile = open("CSV.txt","r")
+    currCSV = csvFile.read()
+    csvFile.close()
+
+    csvFile = open("CSV.txt","w")
+    currCSV += ("," + str(selectedDay.get()) + "," + str(dateNumText.get()) + "," + str(lessonNumText.get()))
+    csvFile.write(currCSV)
+    csvFile.close()
+
+    #http://www.pythonforbeginners.com/files/reading-and-writing-files-in-python
+    #http://effbot.org/tkinterbook/variable.htm
+    #https://www.techwalla.com/articles/how-to-convert-int-to-string-in-python
+
+
+
+
+csvButton = Button(userInputFrame, text="Add to CSV", command=(lambda:genCSV()))
+csvButton.pack()
+
+
+
+
+
+
+
+##############
+
+
+
+
+
 
 
 
@@ -169,12 +208,18 @@ def click(event):
     if(y>330 and y<380):
         ro=5
     dateEntry.configure(text=str(month.get())+"/"+str(cally[ro][co])+"/"+str(year.get()))
-    print(dateNumText)
+
+
     if(selectedDay.get()==1):
         dayOnes.append(str(month.get())+"/"+str(cally[ro][co])+"/"+str(year.get()))
     if(selectedDay.get()==2):
         dayTwos.append(str(month.get())+"/"+str(cally[ro][co])+"/"+str(year.get()))
     createMonth(month.get(),year.get())
+
+    dateNumText.set((str(month.get())+"/"+str(cally[ro][co])+"/"+str(year.get())))
+
+
+
 
 label1.bind("<Button-1>", click)
 
