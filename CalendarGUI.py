@@ -1,8 +1,9 @@
+
 import calendar
 from Tkinter import *
 root = Tk()
 root.title("West Point Calendar")
-root.geometry('550x1000')
+root.geometry('550x800')
 cally=[['0','0','0','0','0','0','0'],['0','0','0','0','0','0','0'],['0','0','0','0','0','0','0'],['0','0','0','0','0','0','0'],['0','0','0','0','0','0','0'],['0','0','0','0','0','0','0']]
 dayOnes=[]
 dayTwos=[]
@@ -134,7 +135,6 @@ inputDateLabel.pack()
 dateEntry.pack()
 
 
-
 #############Classes
 
 classFrame = Frame(root)
@@ -216,23 +216,25 @@ lLessonLabel.pack()
 lEntryBox.pack()
 
 
-
-
-
-
-
-
 #############CSV
 
 
 
 def genCSV():
-    csvFile = open("CSV.txt","r")
-    currCSV = csvFile.read()
-    csvFile.close()
+    #csvFile = open("CSV.txt","r")
+    #currCSV = csvFile.read()
+    #csvFile.close()
+    currCSV=""
+
+    currCSV+="Subject,Start Date,Start Time,End Date,End Time"
+    for x in dayOnes:
+        a=x.split("/")
+        currCSV += "\nDay 1 Lesson "+str(a[3])+","+a[0]+"/"+a[1]+"/"+a[2]+",7:00 AM,"+a[0]+"/"+a[1]+"/"+a[2]+",7:00 AM"
+    for x in dayTwos:
+        a=x.split("/")
+        currCSV += "\nDay 2 Lesson "+str(a[3])+","+a[0]+"/"+a[1]+"/"+a[2]+",7:00 AM,"+a[0]+"/"+a[1]+"/"+a[2]+",7:00 AM"
 
     csvFile = open("CSV.txt","w")
-    currCSV += ("," + str(selectedDay.get()) + "," + str(dateNumText.get()) + "," + str(lessonNumText.get()))
     csvFile.write(currCSV)
     csvFile.close()
 
@@ -243,7 +245,7 @@ def genCSV():
 
 
 
-csvButton = Button(userInputFrame, text="Add to CSV", command=(lambda:genCSV()))
+csvButton = Button(userInputFrame, text="Create CSV", command=(lambda:genCSV()))
 csvButton.pack()
 
 
@@ -303,11 +305,11 @@ def click(event):
 
 
     if(selectedDay.get()==1):
-        dayOnes.append(str(month.get())+"/"+str(cally[ro][co])+"/"+str(year.get()))
+        dayOnes.append(str(month.get())+"/"+str(cally[ro][co])+"/"+str(year.get())+"/"+str(lessonNumText.get()))
         selectedDay.set(2)
 
     elif(selectedDay.get()==2):
-        dayTwos.append(str(month.get())+"/"+str(cally[ro][co])+"/"+str(year.get()))
+        dayTwos.append(str(month.get())+"/"+str(cally[ro][co])+"/"+str(year.get())+"/"+str(lessonNumText.get()))
         selectedDay.set(1)
 
     if (dayNumIncrease):
@@ -316,8 +318,6 @@ def click(event):
     createMonth(month.get(),year.get())
 
     dateNumText.set((str(month.get())+"/"+str(cally[ro][co])+"/"+str(year.get())))
-
-
 
 
 
