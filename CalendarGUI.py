@@ -231,9 +231,33 @@ def genCSV():
     for x in dayOnes:
         a=x.split("/")
         currCSV += "\nDay 1 Lesson "+str(a[3])+","+a[0]+"/"+a[1]+"/"+a[2]+",7:00 AM,"+a[0]+"/"+a[1]+"/"+a[2]+",7:00 AM"
+        if(aClass.get() is not ""):
+            currCSV += "\n"+aClass.get()+","+a[0]+"/"+a[1]+"/"+a[2]+",7:30 AM,"+a[0]+"/"+a[1]+"/"+a[2]+",8:25 AM"
+        if(bClass.get() is not ""):
+            currCSV += "\n"+bClass.get()+","+a[0]+"/"+a[1]+"/"+a[2]+",8:40 AM,"+a[0]+"/"+a[1]+"/"+a[2]+",9:35 AM"
+        if(cClass.get() is not ""):
+            currCSV += "\n"+cClass.get()+","+a[0]+"/"+a[1]+"/"+a[2]+",9:50 AM,"+a[0]+"/"+a[1]+"/"+a[2]+",10:45 AM"
+        if(dClass.get() is not ""):
+            currCSV += "\n"+dClass.get()+","+a[0]+"/"+a[1]+"/"+a[2]+",11:00 AM,"+a[0]+"/"+a[1]+"/"+a[2]+",11:55 AM"
+        if(eClass.get() is not ""):
+            currCSV += "\n"+eClass.get()+","+a[0]+"/"+a[1]+"/"+a[2]+",1:55 PM,"+a[0]+"/"+a[1]+"/"+a[2]+",2:50 PM"
+        if(fClass.get() is not ""):
+            currCSV += "\n"+fClass.get()+","+a[0]+"/"+a[1]+"/"+a[2]+",3:05 PM,"+a[0]+"/"+a[1]+"/"+a[2]+",4:00 PM"
     for x in dayTwos:
         a=x.split("/")
         currCSV += "\nDay 2 Lesson "+str(a[3])+","+a[0]+"/"+a[1]+"/"+a[2]+",7:00 AM,"+a[0]+"/"+a[1]+"/"+a[2]+",7:00 AM"
+        if(gClass.get() is not ""):
+            currCSV += "\n"+gClass.get()+","+a[0]+"/"+a[1]+"/"+a[2]+",7:30 AM,"+a[0]+"/"+a[1]+"/"+a[2]+",8:25 AM"
+        if(hClass.get() is not ""):
+            currCSV += "\n"+hClass.get()+","+a[0]+"/"+a[1]+"/"+a[2]+",8:40 AM,"+a[0]+"/"+a[1]+"/"+a[2]+",9:35 AM"
+        if(iClass.get() is not ""):
+            currCSV += "\n"+iClass.get()+","+a[0]+"/"+a[1]+"/"+a[2]+",9:50 AM,"+a[0]+"/"+a[1]+"/"+a[2]+",10:45 AM"
+        if(jClass.get() is not ""):
+            currCSV += "\n"+jClass.get()+","+a[0]+"/"+a[1]+"/"+a[2]+",11:00 AM,"+a[0]+"/"+a[1]+"/"+a[2]+",11:55 AM"
+        if(kClass.get() is not ""):
+            currCSV += "\n"+kClass.get()+","+a[0]+"/"+a[1]+"/"+a[2]+",1:55 PM,"+a[0]+"/"+a[1]+"/"+a[2]+",2:50 PM"
+        if(lClass.get() is not ""):
+            currCSV += "\n"+lClass.get()+","+a[0]+"/"+a[1]+"/"+a[2]+",3:05 PM,"+a[0]+"/"+a[1]+"/"+a[2]+",4:00 PM"
 
     csvFile = open("CSV.txt","w")
     csvFile.write(currCSV)
