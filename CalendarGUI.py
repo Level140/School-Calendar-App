@@ -177,7 +177,12 @@ csvButton.pack()
 
 #/Right Side Widgets
 
+dayNumIncrease= False
+
+
 def click(event):
+    global dayNumIncrease
+    #http://stackoverflow.com/questions/11904981/local-variable-referenced-before-assignment
     co=0
     ro=0
     x, y = event.x, event.y
@@ -212,11 +217,20 @@ def click(event):
 
     if(selectedDay.get()==1):
         dayOnes.append(str(month.get())+"/"+str(cally[ro][co])+"/"+str(year.get()))
-    if(selectedDay.get()==2):
+        selectedDay.set(2)
+
+    elif(selectedDay.get()==2):
         dayTwos.append(str(month.get())+"/"+str(cally[ro][co])+"/"+str(year.get()))
+        selectedDay.set(1)
+
+    if (dayNumIncrease):
+        lessonNumText.set(int(lessonNumText.get())+1)
+    dayNumIncrease = not dayNumIncrease
     createMonth(month.get(),year.get())
 
     dateNumText.set((str(month.get())+"/"+str(cally[ro][co])+"/"+str(year.get())))
+
+
 
 
 
