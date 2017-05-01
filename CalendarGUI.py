@@ -68,13 +68,14 @@ def lastMonth():
 #Calendar
 createMonth(month.get(),year.get())
 #/Get a grid of the calendar
-B = Button(root, text ="<-", font=('courier', 15, 'bold'),command = lastMonth)
-B.pack(anchor=E)
-F = Button(root, text ="->", font=('courier', 15, 'bold'),command = nextMonth)
-F.pack(anchor=E)
+but_frame = Frame(root)
 label1 = Label(root, textvariable=cal, justify=LEFT, font=('courier', 30, 'bold'), bg='Blue')
 label1.pack(anchor=W,pady=5)
-
+B = Button(but_frame, text ="<-", font=('courier', 15, 'bold'),command = lastMonth)
+B.pack(side=LEFT)
+F = Button(but_frame, text ="->", font=('courier', 15, 'bold'),command = nextMonth)
+F.pack(side=LEFT)
+but_frame.pack(anchor=E)
 #/Calendar
 
 #Right Side Widgets
@@ -214,53 +215,6 @@ lLessonLabel = Label(classFrame, text = "L Period", justify = LEFT)
 lEntryBox = Entry(classFrame, width = 30, textvariable = lClass)
 lLessonLabel.pack()
 lEntryBox.pack()
-
-
-#############CSV
-
-
-
-def genCSV():
-    #csvFile = open("CSV.txt","r")
-    #currCSV = csvFile.read()
-    #csvFile.close()
-    currCSV=""
-
-    currCSV+="Subject,Start Date,Start Time,End Date,End Time"
-    for x in dayOnes:
-        a=x.split("/")
-        currCSV += "\nDay 1 Lesson "+str(a[3])+","+a[0]+"/"+a[1]+"/"+a[2]+",7:00 AM,"+a[0]+"/"+a[1]+"/"+a[2]+",7:00 AM"
-    for x in dayTwos:
-        a=x.split("/")
-        currCSV += "\nDay 2 Lesson "+str(a[3])+","+a[0]+"/"+a[1]+"/"+a[2]+",7:00 AM,"+a[0]+"/"+a[1]+"/"+a[2]+",7:00 AM"
-
-    csvFile = open("CSV.txt","w")
-    csvFile.write(currCSV)
-    csvFile.close()
-
-    #http://www.pythonforbeginners.com/files/reading-and-writing-files-in-python
-    #http://effbot.org/tkinterbook/variable.htm
-    #https://www.techwalla.com/articles/how-to-convert-int-to-string-in-python
-
-
-
-
-csvButton = Button(userInputFrame, text="Create CSV", command=(lambda:genCSV()))
-csvButton.pack()
-
-
-
-
-
-
-
-##############
-
-
-
-
-
-
 
 
 #############CSV
