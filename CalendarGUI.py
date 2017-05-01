@@ -263,6 +263,53 @@ csvButton.pack()
 
 
 
+#############CSV
+
+
+
+def genCSV():
+    #csvFile = open("CSV.txt","r")
+    #currCSV = csvFile.read()
+    #csvFile.close()
+    currCSV=""
+
+    currCSV+="Subject,Start Date,Start Time,End Date,End Time"
+    for x in dayOnes:
+        a=x.split("/")
+        currCSV += "\nDay 1 Lesson "+str(a[3])+","+a[0]+"/"+a[1]+"/"+a[2]+",7:00 AM,"+a[0]+"/"+a[1]+"/"+a[2]+",7:00 AM"
+    for x in dayTwos:
+        a=x.split("/")
+        currCSV += "\nDay 2 Lesson "+str(a[3])+","+a[0]+"/"+a[1]+"/"+a[2]+",7:00 AM,"+a[0]+"/"+a[1]+"/"+a[2]+",7:00 AM"
+
+    csvFile = open("CSV.txt","w")
+    csvFile.write(currCSV)
+    csvFile.close()
+
+    #http://www.pythonforbeginners.com/files/reading-and-writing-files-in-python
+    #http://effbot.org/tkinterbook/variable.htm
+    #https://www.techwalla.com/articles/how-to-convert-int-to-string-in-python
+
+
+
+
+csvButton = Button(userInputFrame, text="Create CSV", command=(lambda:genCSV()))
+csvButton.pack()
+
+
+
+
+
+
+
+##############
+
+
+
+
+
+
+
+
 
 #/Right Side Widgets
 
