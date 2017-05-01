@@ -3,7 +3,7 @@ import calendar
 from Tkinter import *
 root = Tk()
 root.title("West Point Calendar")
-root.geometry('550x800')
+root.geometry('600x800')
 cally=[['0','0','0','0','0','0','0'],['0','0','0','0','0','0','0'],['0','0','0','0','0','0','0'],['0','0','0','0','0','0','0'],['0','0','0','0','0','0','0'],['0','0','0','0','0','0','0']]
 dayOnes=[]
 dayTwos=[]
@@ -75,7 +75,7 @@ B = Button(but_frame, text ="<-", font=('courier', 15, 'bold'),command = lastMon
 B.pack(side=LEFT)
 F = Button(but_frame, text ="->", font=('courier', 15, 'bold'),command = nextMonth)
 F.pack(side=LEFT)
-but_frame.pack(anchor=E)
+but_frame.pack(anchor=W)
 #/Calendar
 
 #Right Side Widgets
@@ -137,9 +137,12 @@ dateEntry.pack()
 
 
 #############Classes
-
-classFrame = Frame(root)
-classFrame.pack()
+bigFrame=Frame(root)
+classFrame = Frame(bigFrame)
+classFrame.pack(side=LEFT,padx=10)
+classFrame2 = Frame(bigFrame)
+classFrame2.pack(side=RIGHT,padx=10)
+bigFrame.pack()
 
 topLessonLabel = Label(classFrame, text = "Enter your class periods below", justify = LEFT)
 topLessonLabel.pack()
@@ -181,38 +184,38 @@ fLessonLabel.pack()
 fEntryBox.pack()
 
 gClass = StringVar()
-gLessonLabel = Label(classFrame, text = "G Period", justify = LEFT)
-gEntryBox = Entry(classFrame, width = 30, textvariable = gClass)
+gLessonLabel = Label(classFrame2, text = "G Period", justify = LEFT)
+gEntryBox = Entry(classFrame2, width = 30, textvariable = gClass)
 gLessonLabel.pack()
 gEntryBox.pack()
 
 hClass = StringVar()
-hLessonLabel = Label(classFrame, text = "H Period", justify = LEFT)
-hEntryBox = Entry(classFrame, width = 30, textvariable = hClass)
+hLessonLabel = Label(classFrame2, text = "H Period", justify = LEFT)
+hEntryBox = Entry(classFrame2, width = 30, textvariable = hClass)
 hLessonLabel.pack()
 hEntryBox.pack()
 
 iClass = StringVar()
-iLessonLabel = Label(classFrame, text = "I Period", justify = LEFT)
-iEntryBox = Entry(classFrame, width = 30, textvariable = iClass)
+iLessonLabel = Label(classFrame2, text = "I Period", justify = LEFT)
+iEntryBox = Entry(classFrame2, width = 30, textvariable = iClass)
 iLessonLabel.pack()
 iEntryBox.pack()
 
 jClass = StringVar()
-jLessonLabel = Label(classFrame, text = "J Period", justify = LEFT)
-jEntryBox = Entry(classFrame, width = 30, textvariable = jClass)
+jLessonLabel = Label(classFrame2, text = "J Period", justify = LEFT)
+jEntryBox = Entry(classFrame2, width = 30, textvariable = jClass)
 jLessonLabel.pack()
 jEntryBox.pack()
 
 kClass = StringVar()
-kLessonLabel = Label(classFrame, text = "K Period", justify = LEFT)
-kEntryBox = Entry(classFrame, width = 30, textvariable = kClass)
+kLessonLabel = Label(classFrame2, text = "K Period", justify = LEFT)
+kEntryBox = Entry(classFrame2, width = 30, textvariable = kClass)
 kLessonLabel.pack()
 kEntryBox.pack()
 
 lClass = StringVar()
-lLessonLabel = Label(classFrame, text = "L Period", justify = LEFT)
-lEntryBox = Entry(classFrame, width = 30, textvariable = lClass)
+lLessonLabel = Label(classFrame2, text = "L Period", justify = LEFT)
+lEntryBox = Entry(classFrame2, width = 30, textvariable = lClass)
 lLessonLabel.pack()
 lEntryBox.pack()
 
