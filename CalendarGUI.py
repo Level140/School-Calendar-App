@@ -2,7 +2,7 @@ import calendar
 from Tkinter import *
 root = Tk()
 root.title("West Point Calendar")
-root.geometry('550x600')
+root.geometry('550x800')
 cally=[['0','0','0','0','0','0','0'],['0','0','0','0','0','0','0'],['0','0','0','0','0','0','0'],['0','0','0','0','0','0','0'],['0','0','0','0','0','0','0'],['0','0','0','0','0','0','0']]
 dayOnes=[]
 dayTwos=[]
