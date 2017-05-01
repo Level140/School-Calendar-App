@@ -38,11 +38,15 @@ def createMonth(mn,yr):
         if(str(yr)==a[2] and str(mn)==a[0]):
             str1=str1.replace(" "+a[1]+" ","*"+a[1]+" ",1)
             str1=str1.replace(" "+a[1]+"\n","*"+a[1]+"\n",1)
+            str1=str1.replace(" "+a[1]+"*","*"+a[1]+"*",1)
+            str1=str1.replace(" "+a[1]+"/","*"+a[1]+"/",1)
     for x in dayTwos:
         a=x.split('/')
         if(str(yr)==a[2] and str(mn)==a[0]):
             str1=str1.replace(" "+a[1]+" ","/"+a[1]+" ",1)
             str1=str1.replace(" "+a[1]+"\n","/"+a[1]+"\n",1)
+            str1=str1.replace(" "+a[1]+"*","/"+a[1]+"*",1)
+            str1=str1.replace(" "+a[1]+"/","/"+a[1]+"/",1)
     cal.set(str1)
 
 def nextMonth():
