@@ -2,7 +2,7 @@ import calendar
 from Tkinter import *
 root = Tk()
 root.title("West Point Calendar")
-root.geometry('550x600')
+root.geometry('550x700')
 cally=[['0','0','0','0','0','0','0'],['0','0','0','0','0','0','0'],['0','0','0','0','0','0','0'],['0','0','0','0','0','0','0'],['0','0','0','0','0','0','0'],['0','0','0','0','0','0','0']]
 dayOnes=[]
 dayTwos=[]
@@ -15,8 +15,8 @@ month.set(1)
 
 
 def createMonth(mn,yr):
-    str1 = calendar.month(year.get(), month.get())
-    cal.set(str1)
+    str1 = calendar.month(yr, mn)
+
     work=str1.split('\n')
     nextWeek=0
     #Get a grid of the calendar
@@ -32,6 +32,19 @@ def createMonth(mn,yr):
                     cally[y][x/3]=str(nextWeek)+work[y+2][x]
                 else:
                     cally[y][x/3]=work[y+2][x]
+    str1=str1.replace("\n","\n ")
+    for x in dayOnes:
+        a=x.split('/')
+        if(str(yr)==a[2] and str(mn)==a[0]):
+            str1=str1.replace(" "+a[1]+" ","*"+a[1]+" ",1)
+            str1=str1.replace(" "+a[1]+"\n","*"+a[1]+"\n",1)
+    for x in dayTwos:
+        a=x.split('/')
+        if(str(yr)==a[2] and str(mn)==a[0]):
+            str1=str1.replace(" "+a[1]+" ","/"+a[1]+" ",1)
+            str1=str1.replace(" "+a[1]+"\n","/"+a[1]+"\n",1)
+    cal.set(str1)
+
 def nextMonth():
     if(month.get()==12):
         month.set(1)
@@ -48,7 +61,7 @@ def lastMonth():
 #/Welcome Screen
 
 #Calendar
-createMonth(month,year)
+createMonth(month.get(),year.get())
 #/Get a grid of the calendar
 B = Button(root, text ="<-", font=('courier', 15, 'bold'),command = lastMonth)
 B.pack(anchor=E)
@@ -153,8 +166,11 @@ def click(event):
         ro=5
     dateEntry.configure(text=str(month.get())+"/"+str(cally[ro][co])+"/"+str(year.get()))
     print(dateNumText)
-
-
+    if(selectedDay.get()==1):
+        dayOnes.append(str(month.get())+"/"+str(cally[ro][co])+"/"+str(year.get()))
+    if(selectedDay.get()==2):
+        dayTwos.append(str(month.get())+"/"+str(cally[ro][co])+"/"+str(year.get()))
+    createMonth(month.get(),year.get())
 
 label1.bind("<Button-1>", click)
 
