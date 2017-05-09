@@ -14,6 +14,7 @@ year=IntVar()
 year.set(2017)
 month.set(1)
 
+dateNumText = StringVar()
 
 def createMonth(mn,yr):
     str1 = calendar.month(yr, mn)
@@ -70,26 +71,13 @@ createMonth(month.get(),year.get())
 #/Get a grid of the calendar
 but_frame = Frame(root)
 label1 = Label(root, textvariable=cal, justify=LEFT, font=('courier', 30, 'bold'), bg='Blue')
-label1.pack(anchor=W,pady=5)
-B = Button(but_frame, text ="<-", font=('courier', 15, 'bold'),command = lastMonth)
+label1.pack(anchor=W,pady=0)
+B = Button(but_frame, text ="<-", font=('courier', 25, 'bold'),command = lastMonth)
 B.pack(side=LEFT)
-F = Button(but_frame, text ="->", font=('courier', 15, 'bold'),command = nextMonth)
+F = Button(but_frame, text ="->", font=('courier', 25, 'bold'),command = nextMonth)
 F.pack(side=LEFT)
 but_frame.pack(anchor=W)
-#/Calendar
-
-#Right Side Widgets
-
-
-#############
-# To get selected day, variable is selectedDay
-# To get selected date, variable is dateNumText
-# To get selected lesson number, variable is lessonNumText
-
-
-############
-
-userInputFrame = Frame(root)
+userInputFrame = Frame(but_frame)
 userInputFrame.pack(side = LEFT)
 
 daySelectFrame = Frame(userInputFrame)
@@ -99,50 +87,16 @@ lessonSelectFrame = Frame(userInputFrame)
 lessonSelectFrame.pack()
 
 
+#/Calendar
 
-lessonNumText = StringVar()
-inputLessonLabel = Label(userInputFrame, text = "Input the lesson number", justify = LEFT)
-entryBox = Entry(userInputFrame, width = 30, textvariable = lessonNumText)
-entryBox.insert(END, "0")
-inputLessonLabel.pack()
-entryBox.pack()
+#Right Side Widgets
 
-##########################
-#Day 1/2 radio buttons
-##########################
-Label(daySelectFrame, text = "Select Day:", justify = LEFT, bg = "White").pack()
-
-selectedDay = IntVar()
-
-Radiobutton(daySelectFrame,
-	text="Day 1",
-	padx = 20,
-	variable=selectedDay,
-	value=1,justify = LEFT).pack(anchor=W)
-
-Radiobutton(daySelectFrame,
-	text="Day 2",
-	padx = 20,
-	variable=selectedDay,
-	value=2,justify = LEFT).pack(anchor=W)
-
-dateNumText = StringVar()
-
-
-inputDateLabel = Label(userInputFrame, text = "Click a date on the calendar above", justify = LEFT)
-dateEntry = Label(userInputFrame, width = 30, text = dateNumText)
-
-inputDateLabel.pack()
-dateEntry.pack()
-
-
-#############Classes
 bigFrame=Frame(root)
 classFrame = Frame(bigFrame)
 classFrame.pack(side=LEFT,padx=10)
 classFrame2 = Frame(bigFrame)
 classFrame2.pack(side=RIGHT,padx=10)
-bigFrame.pack()
+bigFrame.pack(side=LEFT)
 
 topLessonLabel = Label(classFrame, text = "Enter your class periods below", justify = LEFT)
 topLessonLabel.pack()
@@ -218,6 +172,53 @@ lLessonLabel = Label(classFrame2, text = "L Period", justify = LEFT)
 lEntryBox = Entry(classFrame2, width = 30, textvariable = lClass)
 lLessonLabel.pack()
 lEntryBox.pack()
+#############
+# To get selected day, variable is selectedDay
+# To get selected date, variable is dateNumText
+# To get selected lesson number, variable is lessonNumText
+
+
+############
+
+
+
+
+
+lessonNumText = StringVar()
+inputLessonLabel = Label(userInputFrame, text = "Input the lesson number", justify = LEFT)
+entryBox = Entry(userInputFrame, width = 30, textvariable = lessonNumText)
+entryBox.insert(END, "0")
+inputLessonLabel.pack()
+entryBox.pack()
+
+##########################
+#Day 1/2 radio buttons
+##########################
+Label(daySelectFrame, text = "Select Day:", justify = LEFT, bg = "White").pack()
+
+selectedDay = IntVar()
+
+Radiobutton(daySelectFrame,
+	text="Day 1",
+	padx = 20,
+	variable=selectedDay,
+	value=1,justify = LEFT).pack(anchor=W)
+
+Radiobutton(daySelectFrame,
+	text="Day 2",
+	padx = 20,
+	variable=selectedDay,
+	value=2,justify = LEFT).pack(anchor=W)
+
+
+inputDateLabel = Label(userInputFrame, text = "Click a date on the calendar above", justify = LEFT)
+
+inputDateLabel.pack()
+dateEntry.pack()
+
+
+#############Classes
+
 
 
 #############CSV
@@ -273,8 +274,8 @@ def genCSV():
 
 
 
-csvButton = Button(userInputFrame, text="Create CSV", command=(lambda:genCSV()))
-csvButton.pack()
+csvButton = Button(root, text="Create CSV", font=('courier', 20, 'bold'), command=(lambda:genCSV()))
+csvButton.pack(anchor=E)
 
 
 
