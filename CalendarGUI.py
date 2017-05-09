@@ -16,6 +16,7 @@ month.set(1)
 
 dateNumText = StringVar()
 
+
 def createMonth(mn,yr):
     str1 = calendar.month(yr, mn)
 
@@ -212,6 +213,8 @@ Radiobutton(daySelectFrame,
 
 
 inputDateLabel = Label(userInputFrame, text = "Click a date on the calendar above", justify = LEFT)
+dateNumText.set("No Date Selected")
+dateEntry = Label(userInputFrame, width = 30, textvariable = dateNumText)
 
 inputDateLabel.pack()
 dateEntry.pack()
